@@ -5,28 +5,33 @@
 # Lists https://www.w3schools.com/python/python_lists.asp
 # 
 
+
+
 def add(list, item):
-  # https://www.w3schools.com/python/python_lists_add.asp
+  list.append(item)
   pass
 
 
 def remove(list, index):
-  # https://www.w3schools.com/python/python_lists_remove.asp
+  del list[index] 
   pass
 
 
 def clear(list):
-  # https://www.w3schools.com/python/python_lists_remove.asp
+  list.clear()
   pass
 
 
 def print_list(list):
-  # https://www.w3schools.com/python/python_lists_loop.asp
+  if len(list) == 0:
+    print("nothing to print")
+    pass  
+  print(list)
   pass
 
 
 def show(list):
-  # https://www.w3schools.com/python/python_lists_access.asp
+  print_list(list)
   pass
 
 list = []
@@ -35,8 +40,16 @@ while True:
   choice = int(input("1. Add\n2. Remove\n3. Clear\n4. Print list\n5. Show item by index"))
   if choice == 1:
     item = input("What you want to add?\n")
-    add(list, item)
-    print_list(list)
+    if len(list) > 10:
+      print("too much items in list")
+    if len(item) > 100:
+      print("too much symbols")
+    elif len(item)<100: 
+      add(list, item)
+      print_list(list)
+    elif len(item) <= 0:
+      print("not enough symbols")
+    
   elif choice == 2:
     index = int(input("What you want to remove?\n"))
     remove(list, index)
@@ -50,3 +63,4 @@ while True:
     show(list)
   else:
     print("Invalid input")
+  
